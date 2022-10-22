@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>model</module>
+        <module>service</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
