@@ -1,6 +1,6 @@
 package com.h2s.ggkt.vo.activity;
 
-import com.atguigu.ggkt.model.base.BaseEntity;
+import com.h2s.ggkt.model.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

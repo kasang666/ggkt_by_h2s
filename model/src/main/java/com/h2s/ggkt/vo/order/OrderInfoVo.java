@@ -1,6 +1,6 @@
 package com.h2s.ggkt.vo.order;
 
-import com.atguigu.ggkt.model.order.OrderInfo;
+import com.h2s.ggkt.model.order.OrderInfo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
