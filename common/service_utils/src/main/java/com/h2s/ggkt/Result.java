@@ -47,7 +47,7 @@ public class Result<T> {
      * @return
      */
     public static<T> Result<T> success(T data){
-        return build(200, "success", data);
+        return build(20000, "success", data);
     }
 
     public static<T> Result<T> success(){
@@ -61,7 +61,7 @@ public class Result<T> {
      * @return
      */
     public static<T> Result<T> fail(T data){
-        return build(400, "fail", data);
+        return build(20001, "fail", data);
     }
 
     public static<T> Result<T> fail(){
