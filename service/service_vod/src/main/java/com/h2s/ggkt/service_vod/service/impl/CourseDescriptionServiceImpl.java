@@ -1,9 +1,9 @@
 package com.h2s.ggkt.service_vod.service.impl;
 
-import com.h2s.ggkt.service_vod.entity.CourseDescription;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.h2s.ggkt.model.vod.CourseDescription;
 import com.h2s.ggkt.service_vod.mapper.CourseDescriptionMapper;
 import com.h2s.ggkt.service_vod.service.CourseDescriptionService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

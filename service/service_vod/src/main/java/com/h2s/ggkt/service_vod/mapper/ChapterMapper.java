@@ -1,7 +1,7 @@
 package com.h2s.ggkt.service_vod.mapper;
 
-import com.h2s.ggkt.service_vod.entity.Chapter;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.h2s.ggkt.model.vod.Chapter;
 
 /**
  * <p>

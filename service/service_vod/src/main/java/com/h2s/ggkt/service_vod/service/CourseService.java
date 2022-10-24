@@ -1,7 +1,9 @@
 package com.h2s.ggkt.service_vod.service;
 
-import com.h2s.ggkt.service_vod.entity.Course;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.h2s.ggkt.model.vod.Course;
+import com.h2s.ggkt.vo.vod.CourseQueryVo;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CourseService extends IService<Course> {
 
+    Page<Course> pageList(Integer page, Integer limit, CourseQueryVo courseQueryVo);
 }

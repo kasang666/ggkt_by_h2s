@@ -1,9 +1,9 @@
 package com.h2s.ggkt.service_vod.service.impl;
 
-import com.h2s.ggkt.service_vod.entity.Video;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.h2s.ggkt.model.vod.Video;
 import com.h2s.ggkt.service_vod.mapper.VideoMapper;
 import com.h2s.ggkt.service_vod.service.VideoService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

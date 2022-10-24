@@ -1,7 +1,7 @@
 package com.h2s.ggkt.service_vod.service;
 
-import com.h2s.ggkt.service_vod.entity.CourseDescription;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.h2s.ggkt.model.vod.CourseDescription;
 
 /**
  * <p>

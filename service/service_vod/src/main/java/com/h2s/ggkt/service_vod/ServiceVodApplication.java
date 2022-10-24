@@ -10,12 +10,14 @@ package com.h2s.ggkt.service_vod;
  */
 
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@MapperScan(basePackages = {"com.h2s.ggkt.service_vod.mapper"})  // 配置这个注解之后， 可以不用再mapper上添加mapper注解
 @ComponentScan(basePackages = {"com.h2s.ggkt"})
 public class ServiceVodApplication {
     public static void main(String[] args) {
