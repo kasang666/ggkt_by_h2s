@@ -42,7 +42,7 @@ public class CodeGet {
         pc.setModuleName("service_vod"); //模块名
         pc.setParent("com.h2s.ggkt");
         pc.setController("controller");
-        pc.setEntity("entity");
+//        pc.setEntity("entity");
         pc.setService("service");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
@@ -50,7 +50,7 @@ public class CodeGet {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("teacher");   // 设置为哪个表生成实体类
+        strategy.setInclude("course", "course_description", "video");   // 设置为哪个表生成实体类
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

@@ -18,7 +18,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Api(tags = "课程分类管理")
@@ -35,5 +37,18 @@ public class SubjectController {
     public Result<List<Subject>> getChildSubject(@ApiParam(value = "父课程id", name = "id", required = true)
                                                  @PathVariable("id") Long id){
         return Result.success(subjectService.getChildSubject(id));
+    }
+
+    @ApiOperation(value="导出")
+    @GetMapping(value = "/exportData")
+    public void exportData(HttpServletResponse response) {
+        subjectService.exportData(response);
+    }
+
+    @ApiOperation(value = "导入")
+    @PostMapping("importData")
+    public Result importData(MultipartFile file) {
+        subjectService.importDictData(file);
+        return Result.success();
     }
 }
