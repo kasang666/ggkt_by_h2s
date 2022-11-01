@@ -23,7 +23,6 @@ import java.util.List;
  * @since 2022-10-24
  */
 
-@Validated  // 开启校验功能
 @Api(tags = "课程章节管理")
 @RestController
 @RequestMapping("admin/vod/chapter")
@@ -55,6 +54,17 @@ public class ChapterController {
     public Result deleteById(@ApiParam(value = "", name = "", required = true) @PathVariable Long id){
         chapterService.removeById(id);
         return Result.success();
+    }
+
+    /**
+     * 这个接口只用于修改章节时调用，所以直接返回Chapter就行了，不需要封装Video
+     * @param id
+     * @return
+     */
+    @ApiOperation("获取章节信息")
+    @GetMapping("/{id}")
+    public Result<Chapter> getById(@ApiParam(value = "章节id", name = "Id", required = true) @PathVariable Long id){
+        return Result.success(chapterService.getById(id));
     }
 
     @ApiOperation("根据课程id获取章节列表")
