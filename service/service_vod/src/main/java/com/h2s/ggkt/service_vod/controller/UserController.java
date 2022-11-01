@@ -11,11 +11,13 @@ package com.h2s.ggkt.service_vod.controller;
 
 
 import com.h2s.ggkt.Result;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "用户管理")
 @RestController
 @RequestMapping("admin/vod/user")
 @CrossOrigin
