@@ -4,19 +4,21 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.h2s.ggkt.model.vod.Course;
+import com.h2s.ggkt.model.vod.CourseDescription;
 import com.h2s.ggkt.model.vod.Subject;
 import com.h2s.ggkt.model.vod.Teacher;
 import com.h2s.ggkt.service_vod.mapper.CourseMapper;
+import com.h2s.ggkt.service_vod.service.CourseDescriptionService;
 import com.h2s.ggkt.service_vod.service.CourseService;
 import com.h2s.ggkt.service_vod.service.SubjectService;
 import com.h2s.ggkt.service_vod.service.TeacherService;
+import com.h2s.ggkt.vo.vod.CourseFormVo;
 import com.h2s.ggkt.vo.vod.CourseQueryVo;
 import com.h2s.ggkt.vo.vod.CourseVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +37,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     @Autowired
     private SubjectService subjectService;
 
+    @Autowired
+    private CourseDescriptionService courseDescriptionService;
+
     @Override
     public Page<Course> pageList(Integer page, Integer limit, CourseQueryVo courseQueryVo) {
         Page<Course> coursePage = new Page<>(page, limit);
@@ -50,11 +55,56 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
                 .like(title!=null, Course::getTitle ,title);
         page(coursePage, lqw);
         List<Course> records = coursePage.getRecords();
-        records.forEach(item->{
-            getTeacherOrSubjectName(item);
-        });
+        records.forEach(this::getTeacherOrSubjectName);
         return coursePage;
     }
+
+    @Override
+    public Long saveCourseInfo(CourseFormVo courseFormVo) {
+        // 保持课程基本信息
+        Course course = new Course();
+        BeanUtils.copyProperties(courseFormVo, course);
+        save(course);
+        // 保存详情信息
+        CourseDescription courseDescription = new CourseDescription();
+        courseDescription.setCourseId(course.getId());
+        courseDescription.setDescription(courseFormVo.getDescription());
+        courseDescriptionService.save(courseDescription);
+        return course.getId();
+    }
+
+    @Override
+    public CourseFormVo getCourseFormById(Integer id) {
+        Course course = getById(id);
+        if (course == null){
+            return null;
+        }
+        CourseFormVo courseFormVo = new CourseFormVo();
+        BeanUtils.copyProperties(course, courseFormVo);
+        LambdaQueryWrapper<CourseDescription> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(CourseDescription::getCourseId, id);
+        CourseDescription courseDescription = courseDescriptionService.getOne(lqw);
+        if (courseDescription != null){
+            courseFormVo.setDescription(courseDescription.getDescription());
+        }
+        return courseFormVo;
+    }
+
+    //根据id修改课程信息
+    @Override
+    public void updateCourseById(Integer id, CourseFormVo courseFormVo) {
+        //修改课程基本信息
+        Course course = new Course();
+        BeanUtils.copyProperties(courseFormVo, course);
+        baseMapper.updateById(course);
+        //修改课程详情信息
+        LambdaQueryWrapper<CourseDescription> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(CourseDescription::getCourseId, id);
+        CourseDescription courseDescription = courseDescriptionService.getOne(lqw);
+        courseDescription.setDescription(courseFormVo.getDescription());
+        courseDescriptionService.updateById(courseDescription);
+    }
+
 
     /**
      * 根据teacherId贺SubjectId获取相应的对象然后给vo对象封装属性
