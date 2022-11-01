@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.h2s.ggkt.model.vod.Course;
 import com.h2s.ggkt.vo.vod.CourseFormVo;
+import com.h2s.ggkt.vo.vod.CoursePublishVo;
 import com.h2s.ggkt.vo.vod.CourseQueryVo;
 
 /**
@@ -24,4 +25,8 @@ public interface CourseService extends IService<Course> {
 
     //根据id修改课程信息
     public void updateCourseById(Integer id, CourseFormVo courseFormVo);
+
+    CoursePublishVo getCoursePublishVo(Long id);
+
+    boolean publishCourseById(Long id);
 }

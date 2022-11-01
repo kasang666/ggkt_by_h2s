@@ -2,4 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.h2s.ggkt.service_vod.mapper.CourseMapper">
 
+    <select id="selectCourseVoById" resultType="com.h2s.ggkt.vo.vod.CoursePublishVo">
+    select
+    c.id, c.title, c.cover, c.lesson_num as lessonNum, c.price, t.name as teacherName, s1.title as subjectTitle, s2.title as subjectParentTitle
+    from course as c
+        left join teacher t on t.id = c.teacher_id
+        left join subject as s1 on s1.id = c.subject_id
+        left join subject as s2 on s2.id = c.subject_parent_id
+    where c.id = #{id};
+    </select>
 </mapper>

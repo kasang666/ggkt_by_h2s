@@ -13,12 +13,14 @@ import com.h2s.ggkt.service_vod.service.CourseService;
 import com.h2s.ggkt.service_vod.service.SubjectService;
 import com.h2s.ggkt.service_vod.service.TeacherService;
 import com.h2s.ggkt.vo.vod.CourseFormVo;
+import com.h2s.ggkt.vo.vod.CoursePublishVo;
 import com.h2s.ggkt.vo.vod.CourseQueryVo;
 import com.h2s.ggkt.vo.vod.CourseVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -103,6 +105,20 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         CourseDescription courseDescription = courseDescriptionService.getOne(lqw);
         courseDescription.setDescription(courseFormVo.getDescription());
         courseDescriptionService.updateById(courseDescription);
+    }
+
+    @Override
+    public CoursePublishVo getCoursePublishVo(Long id) {
+        return baseMapper.selectCourseVoById(id);
+    }
+
+    @Override
+    public boolean publishCourseById(Long id) {
+        Course course = new Course();
+        course.setId(id);
+        course.setPublishTime(new Date());
+        course.setStatus(1);
+        return this.updateById(course);
     }
 
 

@@ -6,6 +6,7 @@ import com.h2s.ggkt.Result;
 import com.h2s.ggkt.model.vod.Course;
 import com.h2s.ggkt.service_vod.service.CourseService;
 import com.h2s.ggkt.vo.vod.CourseFormVo;
+import com.h2s.ggkt.vo.vod.CoursePublishVo;
 import com.h2s.ggkt.vo.vod.CourseQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,7 +30,6 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    //添加课程基本信息
     @ApiOperation(value = "新增")
     @PostMapping
     public Result save(@RequestBody CourseFormVo courseFormVo) {
@@ -62,6 +62,26 @@ public class CourseController {
         courseService.updateCourseById(id, courseFormVo);
         return Result.success();
     }
+
+    @ApiOperation("根据id获取课程发布信息")
+    @GetMapping("getCoursePublishVo/{id}")
+    public Result getCoursePublishVoById(
+            @ApiParam(value = "课程ID", required = true)
+            @PathVariable Long id){
+        CoursePublishVo coursePublishVo = courseService.getCoursePublishVo(id);
+        return Result.success(coursePublishVo);
+    }
+
+    @ApiOperation("根据id发布课程")
+    @PutMapping("publishCourseById/{id}")
+    public Result publishCourseById(
+            @ApiParam(value = "课程ID", required = true)
+            @PathVariable Long id){
+
+        boolean result = courseService.publishCourseById(id);
+        return Result.success();
+    }
+
 
 }
 

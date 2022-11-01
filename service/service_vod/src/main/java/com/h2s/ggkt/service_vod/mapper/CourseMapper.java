@@ -2,6 +2,7 @@ package com.h2s.ggkt.service_vod.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.h2s.ggkt.model.vod.Course;
+import com.h2s.ggkt.vo.vod.CoursePublishVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -16,4 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CourseMapper extends BaseMapper<Course> {
 
+    CoursePublishVo selectCourseVoById(Long id);
 }
