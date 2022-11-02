@@ -22,7 +22,7 @@ import java.util.Random;
 @Api(tags = "云点播管理")
 @RestController
 @RequestMapping("admin/vod")
-@CrossOrigin
+//@CrossOrigin
 public class VodController {
 
     @Autowired

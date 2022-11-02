@@ -24,7 +24,7 @@ import java.util.List;
  * @since 2022-10-22
  */
 
-@CrossOrigin
+//@CrossOrigin
 @Api(tags = "讲师管理接口")
 @RestController
 @RequestMapping(value = "/admin/vod/teacher")

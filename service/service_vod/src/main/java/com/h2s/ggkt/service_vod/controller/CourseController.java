@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "课程管理")
 @RestController
 @RequestMapping("admin/vod/course")
-@CrossOrigin
+//@CrossOrigin
 public class CourseController {
     @Autowired
     private CourseService courseService;

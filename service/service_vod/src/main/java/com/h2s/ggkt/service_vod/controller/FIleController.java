@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin
+//@CrossOrigin
 @Api(tags = "文件管理接口")
 @RestController
 @RequestMapping("admin/vod/file")

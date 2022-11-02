@@ -20,7 +20,7 @@ import java.util.Map;
 @Api(tags = "用户管理")
 @RestController
 @RequestMapping("admin/vod/user")
-@CrossOrigin
+//@CrossOrigin
 public class UserController {
     /**
      * 登录

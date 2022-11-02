@@ -38,7 +38,7 @@
         <xxl-job.version>2.3.0</xxl-job.version>
         <aliyun.oss.version>3.9.0</aliyun.oss.version>
         <!--nacos命名空间id-->
-        <nacos.dev.namespace>62bec445-54ad-4edd-947d-be09cb3e94d8</nacos.dev.namespace>
+        <pom.nacos.dev.namespace>62bec445-54ad-4edd-947d-be09cb3e94d8</pom.nacos.dev.namespace>
     </properties>
     <dependencies>
         <dependency>
