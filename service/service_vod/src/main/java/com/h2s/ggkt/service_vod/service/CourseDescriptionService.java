@@ -13,4 +13,5 @@ import com.h2s.ggkt.model.vod.CourseDescription;
  */
 public interface CourseDescriptionService extends IService<CourseDescription> {
 
+    void removeByCourseId(Long id);
 }

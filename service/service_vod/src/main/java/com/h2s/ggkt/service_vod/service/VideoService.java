@@ -13,4 +13,5 @@ import com.h2s.ggkt.model.vod.Video;
  */
 public interface VideoService extends IService<Video> {
 
+    void removeByCourseId(Long id);
 }

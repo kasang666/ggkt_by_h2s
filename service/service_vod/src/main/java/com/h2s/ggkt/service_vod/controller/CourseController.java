@@ -37,6 +37,13 @@ public class CourseController {
         return Result.success(courseId);
     }
 
+    @ApiOperation("删除课程")
+    @DeleteMapping("/{id}")
+    public Result removeById(@ApiParam(value = "课程id", name = "Id", required = true) @PathVariable Long id){
+        boolean result = courseService.removeCourseById(id);
+        return Result.success(result);
+    }
+
     @ApiOperation("获取课程列表")
     @GetMapping("/{page}/{limit}")
     public Result<Page<Course>> pageList(

@@ -29,4 +29,6 @@ public interface CourseService extends IService<Course> {
     CoursePublishVo getCoursePublishVo(Long id);
 
     boolean publishCourseById(Long id);
+
+    boolean removeCourseById(Long id);
 }

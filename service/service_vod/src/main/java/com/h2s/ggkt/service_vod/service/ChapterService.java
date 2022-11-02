@@ -16,4 +16,6 @@ import java.util.List;
  */
 public interface ChapterService extends IService<Chapter> {
     List<ChapterVo> getNestedTreeList(Long courseId);
+
+    void removeByCourseId(Long id);
 }

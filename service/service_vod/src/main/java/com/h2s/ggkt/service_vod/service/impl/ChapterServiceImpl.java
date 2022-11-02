@@ -57,6 +57,13 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
         return chapterVos;
     }
 
+    @Override
+    public void removeByCourseId(Long id) {
+        LambdaQueryWrapper<Chapter> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Chapter::getCourseId, id);
+        remove(lqw);
+    }
+
     /**
      * 给chapter设置children(也就是videoVos)
      * @param chapterVo

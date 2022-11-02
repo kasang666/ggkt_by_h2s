@@ -1,5 +1,6 @@
 package com.h2s.ggkt.service_vod.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.h2s.ggkt.model.vod.Video;
 import com.h2s.ggkt.service_vod.mapper.VideoMapper;
@@ -17,4 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements VideoService {
 
+    @Override
+    public void removeByCourseId(Long id) {
+        LambdaQueryWrapper<Video> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Video::getCourseId, id);
+        removeById(id);
+    }
 }

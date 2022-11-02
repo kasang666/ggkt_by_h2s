@@ -8,10 +8,7 @@ import com.h2s.ggkt.model.vod.CourseDescription;
 import com.h2s.ggkt.model.vod.Subject;
 import com.h2s.ggkt.model.vod.Teacher;
 import com.h2s.ggkt.service_vod.mapper.CourseMapper;
-import com.h2s.ggkt.service_vod.service.CourseDescriptionService;
-import com.h2s.ggkt.service_vod.service.CourseService;
-import com.h2s.ggkt.service_vod.service.SubjectService;
-import com.h2s.ggkt.service_vod.service.TeacherService;
+import com.h2s.ggkt.service_vod.service.*;
 import com.h2s.ggkt.vo.vod.CourseFormVo;
 import com.h2s.ggkt.vo.vod.CoursePublishVo;
 import com.h2s.ggkt.vo.vod.CourseQueryVo;
@@ -41,6 +38,12 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     @Autowired
     private CourseDescriptionService courseDescriptionService;
+
+    @Autowired
+    private ChapterService chapterService;
+
+    @Autowired
+    private VideoService videoService;
 
     @Override
     public Page<Course> pageList(Integer page, Integer limit, CourseQueryVo courseQueryVo) {
@@ -119,6 +122,18 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         course.setPublishTime(new Date());
         course.setStatus(1);
         return this.updateById(course);
+    }
+
+    @Override
+    public boolean removeCourseById(Long id) {
+        // 删除对应的章节信息
+        chapterService.removeByCourseId(id);
+        // 删除对应的课时信息
+        videoService.removeByCourseId(id);
+        // 删除对应的课程描述信息
+        courseDescriptionService.removeByCourseId(id);
+        // 删除课程
+        return removeById(id);
     }
 
 
