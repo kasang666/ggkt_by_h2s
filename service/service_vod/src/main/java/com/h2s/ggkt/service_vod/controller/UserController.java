@@ -53,4 +53,5 @@ public class UserController {
     public Result logout(){
         return Result.success();
     }
+
 }
