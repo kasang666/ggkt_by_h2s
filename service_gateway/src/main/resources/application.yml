@@ -1,0 +1,18 @@
+server:
+  port: 8333
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: @nacos.dev.namespace@
+        enabled: true  #使用服务发现路由
+    gateway:
+      routes:
+        - id: service-vod
+          uri: lb//service-vod
+          predicts:
+            - Path=/*/vod/**

@@ -7,6 +7,7 @@
         <module>model</module>
         <module>service</module>
         <module>common</module>
+        <module>service_gateway</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -36,6 +37,8 @@
         <jwt.version>0.7.0</jwt.version>
         <xxl-job.version>2.3.0</xxl-job.version>
         <aliyun.oss.version>3.9.0</aliyun.oss.version>
+        <!--nacos命名空间id-->
+        <nacos.dev.namespace>62bec445-54ad-4edd-947d-be09cb3e94d8</nacos.dev.namespace>
     </properties>
     <dependencies>
         <dependency>
