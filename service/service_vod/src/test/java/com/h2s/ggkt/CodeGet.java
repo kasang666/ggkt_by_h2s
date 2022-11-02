@@ -50,7 +50,7 @@ public class CodeGet {
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("course", "course_description", "video");   // 设置为哪个表生成实体类
+        strategy.setInclude("video_visitor");   // 设置为哪个表生成实体类
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 
