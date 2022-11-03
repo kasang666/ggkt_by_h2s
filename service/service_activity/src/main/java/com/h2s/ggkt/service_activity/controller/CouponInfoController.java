@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.h2s.ggkt.Result;
 import com.h2s.ggkt.model.activity.CouponInfo;
+import com.h2s.ggkt.model.activity.CouponUse;
 import com.h2s.ggkt.service_activity.service.CouponInfoService;
+import com.h2s.ggkt.service_activity.service.CouponUseService;
+import com.h2s.ggkt.vo.activity.CouponUseQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,6 +33,9 @@ public class CouponInfoController {
 
     @Autowired
     private CouponInfoService couponInfoService;
+
+    @Autowired
+    private CouponUseService couponUseService;
 
     @ApiOperation(value = "获取优惠卷分页列表")
     @GetMapping("{page}/{limit}")
@@ -77,6 +83,16 @@ public class CouponInfoController {
     public Result batchRemove(@RequestBody List<String> idList){
         couponInfoService.removeByIds(idList);
         return Result.success();
+    }
+
+    @ApiOperation("获取已使用的优惠卷列表")
+    @GetMapping("/couponUse/{page}/{limit}")
+    public Result getCouponUseList(@PathVariable Integer page,
+                                   @PathVariable Integer limit,
+                                   @ApiParam(value = "已使用的优惠卷查询对象", required = false) CouponUseQueryVo couponUseQueryVo){
+        Page<CouponUse> usePage = new Page<>(page, limit);
+        usePage = (Page<CouponUse>) couponUseService.selectCouponUsePage(usePage, couponUseQueryVo);
+        return Result.success(usePage);
     }
 
 }

@@ -1,0 +1,33 @@
+server:
+  port: 8305
+spring:
+  application:
+    name: service-wechat
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/glkt_wechat?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: @pom.nacos.dev.namespace@
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/h2s/ggkt/service_wechat/mapper/xml/*.xml
+wechat:
+  mpAppId: wx09f201e9013e81d8  # 硅谷课堂微信公众平台appId
+  mpAppSecret: 6c999765c12c51850d28055e8b6e2eda  # 硅谷课堂微信公众平台api秘钥
