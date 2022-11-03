@@ -15,12 +15,19 @@ spring:
           uri: lb://service-vod
           predicates:
             - Path=/*/vod/**
+
         - id: service-order
           uri: lb://service-order
           predicates:
             - Path=/*/order/**
+
         - id: service-activity
           uri: lb://service-activity
           predicates:
             - Path=/*/activity/**
+
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
 
