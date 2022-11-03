@@ -79,21 +79,22 @@
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
-                <includes> <include>**/*.yml</include>
+                <includes>
+                    <include>**/*.yml</include>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
-                <filtering>false</filtering>
-            </resource>
-            <!--解决无法解析@namespace的问题@-->
-            <resource>
-                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
+            <!--解决无法解析@namespace的问题@-->
+            <!--<resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>-->
         </resources>
     </build>
 

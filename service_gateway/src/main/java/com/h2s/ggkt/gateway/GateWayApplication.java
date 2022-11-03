@@ -1,4 +1,4 @@
-package com.h2s.ggkt;
+package com.h2s.ggkt.gateway;
 // -*-coding:utf-8 -*-
 
 /*
