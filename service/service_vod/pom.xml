@@ -47,6 +47,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.qcloud</groupId>
             <artifactId>vod_api</artifactId>
             <version>2.1.4</version>
@@ -83,6 +88,11 @@
                     <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
+            </resource>
+            <!--解决无法解析@namespace的问题@-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
     </build>

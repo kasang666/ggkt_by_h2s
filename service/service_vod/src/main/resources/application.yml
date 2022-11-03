@@ -20,9 +20,9 @@ spring:
       max-request-size: 1024MB
   cloud:
     nacos:
-      discovery:
-        namespace: 62bec445-54ad-4edd-947d-be09cb3e94d8
       server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: @pom.nacos.dev.namespace@
 
 mybatis-plus:
   configuration:
