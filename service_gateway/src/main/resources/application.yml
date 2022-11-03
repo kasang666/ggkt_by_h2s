@@ -19,4 +19,8 @@ spring:
           uri: lb://service-order
           predicates:
             - Path=/*/order/**
+        - id: service-activity
+          uri: lb://service-activity
+          predicates:
+            - Path=/*/activity/**
 

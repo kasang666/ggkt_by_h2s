@@ -1,7 +1,10 @@
 package com.h2s.ggkt.service_activity.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.h2s.ggkt.model.activity.CouponUse;
+import com.h2s.ggkt.vo.activity.CouponUseQueryVo;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.h2s.ggkt.model.activity.CouponUse;
  * @since 2022-11-03
  */
 public interface CouponUseService extends IService<CouponUse> {
+
+    IPage<CouponUse> selectCouponUsePage(Page<CouponUse> pageParam, CouponUseQueryVo couponUseQueryVo);
 
 }
