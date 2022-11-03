@@ -1,7 +1,11 @@
 package com.h2s.ggkt.service_order.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.h2s.ggkt.model.order.OrderInfo;
+import com.h2s.ggkt.vo.order.OrderInfoQueryVo;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.h2s.ggkt.model.order.OrderInfo;
  */
 public interface OrderInfoService extends IService<OrderInfo> {
 
+    Map<String, Object> findPageOrderInfo(Page<OrderInfo> pageParam, OrderInfoQueryVo orderInfoQueryVo);
 }

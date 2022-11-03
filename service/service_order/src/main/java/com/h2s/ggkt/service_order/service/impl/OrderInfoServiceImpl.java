@@ -1,10 +1,14 @@
 package com.h2s.ggkt.service_order.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.h2s.ggkt.model.order.OrderInfo;
 import com.h2s.ggkt.service_order.mapper.OrderInfoMapper;
 import com.h2s.ggkt.service_order.service.OrderInfoService;
+import com.h2s.ggkt.vo.order.OrderInfoQueryVo;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -17,4 +21,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo> implements OrderInfoService {
 
+
+
+    @Override
+    public Map<String, Object> findPageOrderInfo(Page<OrderInfo> pageParam, OrderInfoQueryVo orderInfoQueryVo) {
+        return null;
+    }
 }
