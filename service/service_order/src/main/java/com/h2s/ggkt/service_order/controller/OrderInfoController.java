@@ -28,7 +28,7 @@ import java.util.Map;
 
 @Api(tags = "订单管理")
 @RestController
-@RequestMapping("/service_order/order-info")
+@RequestMapping("admin/order/orderInfo")
 public class OrderInfoController {
 
     @Autowired
